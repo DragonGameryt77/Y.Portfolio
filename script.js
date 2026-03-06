@@ -1,15 +1,10 @@
-// YOANN PORTFOLIO - JAVASCRIPT INTERACTIF
 
 document.addEventListener('DOMContentLoaded', function() {
     initHamburgerMenu();
     initNavigation();
-    initProjectFilters();
     initScrollAnimations();
-    initSkillBars();
     initBackToTop();
 });
-
-// MENU HAMBURGER
 
 function initHamburgerMenu() {
     const hamburger = document.querySelector('.hamburger');
@@ -21,7 +16,6 @@ function initHamburgerMenu() {
             navMenu.classList.toggle('active');
         });
 
-        // Fermer le menu quand on clique sur un lien
         const navLinks = navMenu.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -31,8 +25,6 @@ function initHamburgerMenu() {
         });
     }
 }
-
-// NAVIGATION ACTIVE
 
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
@@ -51,44 +43,8 @@ function initNavigation() {
     });
 }
 
-// FILTRES PROJETS
-
-function initProjectFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectItems = document.querySelectorAll('.project-item');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-
-            // Mettre à jour le bouton actif
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-
-            // Filtrer les projets
-            projectItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                
-                if (filter === 'tous' || category === filter) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
-}
-
-// ANIMATIONS AU SCROLL
-
 function initScrollAnimations() {
-    const elements = document.querySelectorAll('.skill-card, .project-item, .info-card');
+    const elements = document.querySelectorAll('.project-card, .skill-group, .contact-card');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -109,47 +65,28 @@ function initScrollAnimations() {
     });
 }
 
-// BARRES DE COMPÉTENCES ANIMÉES
+function initBackToTop() {
+    const backToTopButton = document.getElementById('backToTop');
 
-function initSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.style.width;
-                entry.target.style.width = '0';
-                setTimeout(() => {
-                    entry.target.style.width = width;
-                }, 100);
-                observer.unobserve(entry.target);
+    if (backToTopButton) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
             }
         });
-    }, {
-        threshold: 0.1
-    });
 
-    skillBars.forEach(bar => {
-        observer.observe(bar);
-    });
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 }
 
-// FORMULAIRE CONTACT (optionnel)
-
-function handleContactForm(event) {
-    if (event) {
-        event.preventDefault();
-    }
-    
-    const form = document.getElementById('contactForm');
-    if (!form) return;
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
     if (name && email && message) {
-        // Sauvegarder dans localStorage
         const contact = {
             name: name,
             email: email,
@@ -161,7 +98,6 @@ function handleContactForm(event) {
         contacts.push(contact);
         localStorage.setItem('contacts', JSON.stringify(contacts));
 
-        // Message de confirmation
         alert('Merci ' + name + '! Votre message a été reçu. Je vous répondrai dès que possible!');
         form.reset();
     } else {
@@ -169,7 +105,6 @@ function handleContactForm(event) {
     }
 }
 
-// Smooth scroll pour les ancres
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -182,10 +117,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// ====================================
-// BOUTON BACK TO TOP
-// ====================================
 
 function initBackToTop() {
     const backToTop = document.getElementById('backToTop');
