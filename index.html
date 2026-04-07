@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio de Yoann, lyceen passionne par l'informatique — projets web, mobile, Python, IA et modelisation 3D. Vision 2D & 3D." />
+  <meta name="author" content="Yoann" />
+  <meta name="theme-color" content="#101826" />
+  <title>Yoann — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="mode-3d">
+
+  <!-- 3D ONLY: particles -->
+  <canvas id="particles-canvas"></canvas>
+  <!-- 2D ONLY: orbs -->
+  <div class="page-orb orb-left"></div>
+  <div class="page-orb orb-right"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">YOANN<span class="logo-dot">.</span></a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link active">Accueil</a></li>
+        <li><a href="#about" class="nav-link">A propos</a></li>
+        <li><a href="#phare" class="nav-link">Projet phare</a></li>
+        <li><a href="#projects" class="nav-link">Projets</a></li>
+        <li><a href="#competences" class="nav-link">Competences</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="switch-wrapper">
+        <span class="switch-lbl active" id="lbl2d">2D</span>
+        <div class="switch-track" id="track" role="switch" aria-checked="false" aria-label="Basculer 2D / 3D">
+          <div class="switch-fill"></div>
+          <div class="switch-thumb">
+            <div class="thumb-icon icon-2d">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <rect x="2" y="2" width="10" height="10" rx="1.5" stroke="#888" stroke-width="1.4" fill="none"/>
+                <line x1="2" y1="7" x2="12" y2="7" stroke="#888" stroke-width="1"/>
+                <line x1="7" y1="2" x2="7" y2="12" stroke="#888" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="thumb-icon icon-3d">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <polyline points="7,2 12,5 7,8 2,5 7,2" stroke="#534AB7" stroke-width="1.3" fill="none" stroke-linejoin="round"/>
+                <polyline points="2,5 2,9 7,12 12,9 12,5" stroke="#534AB7" stroke-width="1.3" fill="none" stroke-linejoin="round"/>
+                <line x1="7" y1="8" x2="7" y2="12" stroke="#534AB7" stroke-width="1.3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <span class="switch-lbl" id="lbl3d">3D</span>
+      </div>
+
+      <button class="hamburger" id="hamburger" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════ HOME / HERO ═══════════ -->
+    <section id="home">
+
+      <!-- HERO 2D -->
+      <div class="hero-2d container">
+        <div class="intro-grid">
+          <div class="intro-copy reveal">
+            <p class="section-kicker">Presentation</p>
+            <h1 class="title-2d">Yoann, 16 ans, lyceen et passionne par l'informatique.</h1>
+            <p class="lead">Je developpe des projets pour apprendre, tester des idees et progresser dans plusieurs domaines : developpement web, application mobile, Python, intelligence artificielle et modelisation 3D.</p>
+            <p class="sub-lead">Ce portfolio rassemble les realisations que je considere comme les plus serieuses et les plus interessantes.</p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+              <a href="#contact" class="btn btn-secondary">Me contacter</a>
+            </div>
+          </div>
+          <aside class="intro-panel reveal">
+            <p class="panel-label">Profil</p>
+            <div class="hero-metrics">
+              <article><strong>16 ans</strong><span>Lyceen motive et passionne par le numerique</span></article>
+              <article><strong>5 domaines</strong><span>Web, mobile, Python, IA et 3D</span></article>
+              <article><strong>14 projets</strong><span>retenus pour leur qualite et leur diversite</span></article>
+            </div>
+            <div class="hero-stack">
+              <span>JavaScript</span><span>React Native</span><span>Python</span>
+              <span>TensorFlow</span><span>HTML / CSS</span><span>3D</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- HERO 3D -->
+      <div class="hero-3d">
+        <div class="hero-3d-inner">
+          <div class="hero-3d-content reveal">
+            <p class="hero-tag">Developpeur passionne — Portfolio 2026</p>
+            <h1 class="title-3d">
+              <span class="line">Yoann,</span>
+              <span class="line gradient-text">createur de projets</span>
+              <span class="line">numeriques.</span>
+            </h1>
+            <p class="hero-desc">Je concois des experiences web, mobiles et desktop — du concept au produit fini. Explorez mes realisations dans un univers interactif.</p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Explorer</a>
+              <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Contact</a>
+            </div>
+            <div class="hero-stats-3d">
+              <div class="stat-3d"><strong>14+</strong><span>Projets</span></div>
+              <div class="stat-3d"><strong>5</strong><span>Domaines</span></div>
+              <div class="stat-3d"><strong>2+</strong><span>Ans d'exp.</span></div>
+            </div>
+          </div>
+          <div class="hero-visual reveal">
+            <div class="cube-scene">
+              <div class="cube">
+                <div class="cube-face front"><i class="fas fa-code"></i></div>
+                <div class="cube-face back"><i class="fas fa-mobile-alt"></i></div>
+                <div class="cube-face right"><i class="fas fa-brain"></i></div>
+                <div class="cube-face left"><i class="fas fa-cube"></i></div>
+                <div class="cube-face top"><i class="fas fa-gamepad"></i></div>
+                <div class="cube-face bottom"><i class="fas fa-server"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════ ABOUT ═══════════ -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">A propos</p>
+          <h2>Un lyceen qui construit pour apprendre</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-card reveal tilt-card">
+            <div class="about-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Developpement</h3>
+            <p>Sites web interactifs, outils en ligne, interfaces dynamiques — JavaScript, HTML, CSS sont mes outils quotidiens.</p>
+          </div>
+          <div class="about-card reveal tilt-card">
+            <div class="about-icon"><i class="fas fa-mobile-screen"></i></div>
+            <h3>Mobile</h3>
+            <p>Application React Native complete avec navigation, gamification, notifications et persistance locale.</p>
+          </div>
+          <div class="about-card reveal tilt-card">
+            <div class="about-icon"><i class="fas fa-robot"></i></div>
+            <h3>Intelligence Artificielle</h3>
+            <p>Classification d'image avec TensorFlow, controle gestuel avec MediaPipe — je plonge dans le deep learning.</p>
+          </div>
+          <div class="about-card reveal tilt-card">
+            <div class="about-icon"><i class="fas fa-cubes"></i></div>
+            <h3>Modelisation 3D</h3>
+            <p>Sweet Home 3D, SketchUp, Studio 2.0 — conception d'espaces, de vehicules et de mecanismes techniques.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FEATURED ═══════════ -->
+    <section id="phare">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Projet phare</p>
+          <h2>Quest Life</h2>
+          <p class="section-sub">Le projet le plus complet du portfolio, celui qui montre le mieux ma maniere de concevoir une application utile et coherente.</p>
+        </div>
+        <article class="featured-card reveal">
+          <div class="featured-copy">
+            <span class="pill">Application mobile</span>
+            <h3>Une application qui transforme les objectifs du quotidien en quetes a accomplir.</h3>
+            <p>Quest Life est une application mobile realisee avec React Native et Expo. Elle permet de gerer des quetes quotidiennes, des taches avec deadline, un systeme d'XP, des niveaux et des rappels.</p>
+            <ul class="feature-list">
+              <li>Navigation par onglets avec une structure claire et agreable a utiliser.</li>
+              <li>Systeme de progression avec XP, niveau, streak et reinitialisation quotidienne.</li>
+              <li>Stockage local, tutoriel integre et notifications pour enrichir l'experience.</li>
+            </ul>
+            <div class="tech-tags">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Expo</span>
+              <span class="tech-tag">AsyncStorage</span>
+              <span class="tech-tag">Notifications</span>
+            </div>
+          </div>
+          <div class="featured-side">
+            <div class="score-card">
+              <span class="score-label">Pourquoi ce choix</span>
+              <strong>Un projet utile, structure et credible</strong>
+              <p>Il montre de l'interface, de la logique produit, de la persistance de donnees et une vraie reflexion autour de l'usage.</p>
+            </div>
+            <div class="mini-grid">
+              <article><span>01</span><p>Mobile</p></article>
+              <article><span>02</span><p>Gamification</p></article>
+              <article><span>03</span><p>Donnees locales</p></article>
+              <article><span>04</span><p>UX claire</p></article>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════ PROJECTS ═══════════ -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Projets</p>
+          <h2>Selection et diversite reunies dans une seule vitrine</h2>
+          <p class="section-sub">Tous les projets les plus interessants pour donner une vue lisible, professionnelle et fidele de mon travail.</p>
+        </div>
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="python">Python / IA</button>
+          <button class="filter-btn" data-filter="3d">3D</button>
+          <button class="filter-btn" data-filter="game">Jeux</button>
+        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SKILLS ═══════════ -->
+    <section id="competences">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Competences techniques</p>
+          <h2>Les outils et domaines que je travaille le plus</h2>
+          <p class="section-sub">Ces competences viennent directement des projets presentes plus haut.</p>
+        </div>
+
+        <!-- 2D: skill cards -->
+        <div class="skills-2d">
+          <div class="skills-cards-grid">
+            <article class="skill-card reveal">
+              <h3>Developpement web</h3>
+              <ul><li>HTML5 / CSS3</li><li>JavaScript</li><li>Responsive design</li><li>Interfaces interactives</li></ul>
+            </article>
+            <article class="skill-card reveal">
+              <h3>Application mobile</h3>
+              <ul><li>React Native</li><li>Expo</li><li>Navigation mobile</li><li>Persistance locale</li></ul>
+            </article>
+            <article class="skill-card reveal">
+              <h3>Python et IA</h3>
+              <ul><li>Python</li><li>TensorFlow</li><li>Computer Vision</li><li>MediaPipe / OpenCV</li></ul>
+            </article>
+            <article class="skill-card reveal">
+              <h3>Creation et modelisation</h3>
+              <ul><li>SketchUp</li><li>Sweet Home 3D</li><li>Studio 2.0</li><li>Conception de volumes</li></ul>
+            </article>
+          </div>
+        </div>
+
+        <!-- 3D: skill orbs -->
+        <div class="skills-3d">
+          <div class="skills-orbs-grid">
+            <div class="skill-orb reveal tilt-card" data-level="92">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fab fa-js-square"></i></span>
+              <p>JavaScript</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="90">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fab fa-html5"></i></span>
+              <p>HTML5</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="88">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fab fa-css3-alt"></i></span>
+              <p>CSS3</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="75">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fab fa-react"></i></span>
+              <p>React Native</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="72">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fab fa-python"></i></span>
+              <p>Python</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="65">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fas fa-brain"></i></span>
+              <p>TensorFlow</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="80">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fas fa-cube"></i></span>
+              <p>Modelisation 3D</p>
+            </div>
+            <div class="skill-orb reveal tilt-card" data-level="85">
+              <div class="orb-ring"></div>
+              <span class="skill-icon"><i class="fab fa-git-alt"></i></span>
+              <p>Git / GitHub</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Contact</p>
+          <h2>Me contacter</h2>
+          <p class="section-sub">Pour echanger autour d'un projet, d'une idee ou simplement decouvrir davantage mon travail.</p>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-card reveal tilt-card" href="mailto:contact.yoann.service@gmail.com">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <p class="contact-label">Email</p>
+              <span>contact.yoann.service@gmail.com</span>
+            </div>
+          </a>
+          <a class="contact-card reveal tilt-card" href="https://github.com/DragonGameryt77" target="_blank" rel="noreferrer">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <p class="contact-label">GitHub</p>
+              <span>DragonGameryt77</span>
+            </div>
+          </a>
+          <a class="contact-card reveal tilt-card" href="https://discord.com" target="_blank" rel="noreferrer">
+            <div class="contact-icon"><i class="fab fa-discord"></i></div>
+            <div>
+              <p class="contact-label">Discord</p>
+              <span>_dragongameryt7</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Portfolio personnel de Yoann — 2026</p>
+      <a href="#home" class="back-top"><i class="fas fa-arrow-up"></i> Haut de page</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
